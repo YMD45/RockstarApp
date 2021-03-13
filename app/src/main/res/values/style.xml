@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="activeMenuItem">
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="inactiveMenuItem">
+        <item name="android:textSize">20sp</item>
+    </style>
+</resources>
