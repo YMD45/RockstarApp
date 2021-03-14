@@ -5,7 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ListView
+import android.widget.SearchView
 import com.example.rockstarapp.R
+import com.example.rockstarapp.adapter.RockstarListViewAdapter
+import com.example.rockstarapp.database.AppDatabase
+import com.example.rockstarapp.model.Rockstar
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +26,10 @@ class RockstarFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var listViewRockstar: ListView
+    private lateinit var adapter: RockstarListViewAdapter
+    private lateinit var listRockstar:ArrayList<Rockstar>
+    private lateinit var searchRockstar: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +44,35 @@ class RockstarFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_rockstar, container, false)
+        val root = inflater.inflate(R.layout.fragment_rockstar, container, false)
+        listViewRockstar = root.findViewById(R.id.list_rockstars)
+        searchRockstar = root.findViewById(R.id.search_bar)
+
+        val db = AppDatabase(requireContext())
+        var rockList = db.RockstarDao().getAll()
+        listRockstar = ArrayList()
+        if (rockList.isNotEmpty()){
+            for(rockstar in rockList) {
+                listRockstar.add(rockstar)
+            }
+        }
+
+        adapter = RockstarListViewAdapter(requireActivity(),listRockstar,false)
+        listViewRockstar.adapter = adapter
+
+        searchRockstar.setOnQueryTextListener(object:SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchRockstar.clearFocus()
+                return false
+            }
+
+            override fun onQueryTextChange(rockstarSearchText: String?): Boolean {
+                adapter.filter.filter(rockstarSearchText)
+                return false
+            }
+
+        })
+        return root
     }
 
     companion object {
