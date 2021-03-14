@@ -2,17 +2,20 @@ package com.example.rockstarapp.database
 
 import android.content.Context
 import androidx.room.*
+import com.example.rockstarapp.database.dao.ProfilDao
 import com.example.rockstarapp.database.dao.RockstarDao
+import com.example.rockstarapp.model.Profil
 import com.example.rockstarapp.model.Rockstar
 
 @Database(
-    entities = [Rockstar::class],
+    entities = [Rockstar::class, Profil::class],
     version = 1,
     exportSchema = false
 )
 
 abstract class AppDatabase: RoomDatabase() {
     abstract fun RockstarDao(): RockstarDao
+    abstract fun ProfilDao(): ProfilDao
 
     companion object {
         @Volatile private var instance: AppDatabase? = null

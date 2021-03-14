@@ -3,7 +3,9 @@ import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.example.rockstarapp.database.AppDatabase
+import com.example.rockstarapp.database.dao.ProfilDao
 import com.example.rockstarapp.database.dao.RockstarDao
+import com.example.rockstarapp.model.Profil
 import com.example.rockstarapp.model.Rockstar
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.After
@@ -22,6 +24,7 @@ import java.io.IOException
 @RunWith(AndroidJUnit4::class)
 class AppDatabaseUnitTest {
     private lateinit var rockstarDao: RockstarDao
+    private lateinit var profilDao: ProfilDao
     private lateinit var db: AppDatabase
 
     @Before
@@ -32,6 +35,7 @@ class AppDatabaseUnitTest {
         ).build()
 
         rockstarDao = db.RockstarDao()
+        profilDao = db.ProfilDao()
     }
 
     @After
@@ -47,6 +51,15 @@ class AppDatabaseUnitTest {
         rockstarDao.insert(testRockstar)
         val todoItem = rockstarDao.findByLastName(testRockstar.lastName)
         assertThat(todoItem, equalTo(testRockstar))
+    }
+
+    @Test
+    @Throws(Exception::class)
+    fun writeProfilAndReadInList() {
+        val testProfil = Profil(1,"testUrl","MJ")
+        profilDao.insert(testProfil)
+        val todoItem = profilDao.findByName(testProfil.fullName)
+        assertThat(todoItem, equalTo(testProfil))
     }
 
 }
