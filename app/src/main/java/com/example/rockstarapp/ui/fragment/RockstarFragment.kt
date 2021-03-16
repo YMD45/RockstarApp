@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.SearchView
-import androidx.room.Database
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.rockstarapp.R
 import com.example.rockstarapp.adapter.RockstarListViewAdapter

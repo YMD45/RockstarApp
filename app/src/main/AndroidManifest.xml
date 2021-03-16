@@ -19,10 +19,6 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.RockstarApp">
-        <service
-            android:name=".service.RockstarService"
-            android:enabled="true"
-            android:exported="true"></service>
         <!-- FileProvider - Expose File -->
         <provider
             android:name="androidx.core.content.FileProvider"

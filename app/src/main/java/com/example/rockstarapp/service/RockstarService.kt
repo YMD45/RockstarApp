@@ -1,15 +1,7 @@
 package com.example.rockstarapp.service
 
-
 import android.content.Context
-import android.database.sqlite.SQLiteConstraintException
 import android.os.AsyncTask
-import android.util.Log
-import android.widget.BaseAdapter
-import android.widget.ListView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.example.rockstarapp.adapter.RockstarListViewAdapter
-import com.example.rockstarapp.database.AppDatabase
 import com.example.rockstarapp.model.Rockstar
 import org.json.JSONObject
 import java.io.IOException
