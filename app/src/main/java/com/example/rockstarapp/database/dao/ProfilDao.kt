@@ -15,7 +15,7 @@ interface  ProfilDao {
     @Query("SELECT * FROM profil LIMIT 1")
     fun getProfil(): Profil
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.ABORT)
     fun insert(vararg profil: Profil)
 
     @Delete

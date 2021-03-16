@@ -21,7 +21,7 @@ interface  RockstarDao {
     @Query("SELECT * FROM rockstars WHERE bookmark LIKE :bookmark")
     fun findByBookmark(bookmark: Boolean):  List<Rockstar>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.ABORT)
     fun insert(vararg rockstar: Rockstar)
 
     @Delete

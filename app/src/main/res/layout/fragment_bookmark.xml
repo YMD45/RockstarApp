@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragment.BookmarkFragment">
+    tools:context=".ui.fragment.BookmarkFragment"
+    android:layout_marginBottom="50dp">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_bookmark"
@@ -29,7 +30,9 @@
         android:id="@+id/list_rockstars_bookmarked"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_bookmark"/>
+        app:layout_constraintTop_toBottomOf="@id/toolbar_bookmark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="?android:attr/actionBarSize"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

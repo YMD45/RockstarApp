@@ -15,4 +15,13 @@ data class Rockstar(
 
     constructor(status: String,lastName: String,firstName: String,picture: String,bookmark: Boolean):
             this(0,status,lastName,firstName,picture,bookmark)
+
+    override fun equals(other: Any?): Boolean {
+        var otherRockstar = other as Rockstar
+
+        return otherRockstar.lastName == this.lastName &&
+                otherRockstar.firstName == this.firstName &&
+                otherRockstar.picture == this.picture &&
+                otherRockstar.status == this.status
+    }
 }

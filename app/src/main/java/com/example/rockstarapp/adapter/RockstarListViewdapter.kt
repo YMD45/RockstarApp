@@ -5,22 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.example.rockstarapp.R
 import com.example.rockstarapp.database.AppDatabase
 import com.example.rockstarapp.model.Rockstar
-import org.json.JSONException
-import org.json.JSONObject
+
 
 class RockstarListViewAdapter(private val context: Context,
                               private var dataSource: ArrayList<Rockstar>,
                               private var bookmarkView:Boolean) : BaseAdapter(),Filterable {
 
     private val inflater: LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-    private lateinit var bookmarks:TextView
     private lateinit var rockstarStatus:TextView
     private lateinit var rockstarFullName:TextView
     private lateinit var rockstarAddBookmark:CheckBox
     private lateinit var rockstarDeleteBookmark:ImageButton
+    private lateinit var rockstarImage:ImageView
     private lateinit var rockstar:Rockstar
 
     private  var listRockstar:ArrayList<Rockstar> = dataSource
@@ -38,11 +41,19 @@ class RockstarListViewAdapter(private val context: Context,
         rockstarStatus = view.findViewById(R.id.rockstar_status)
         rockstarAddBookmark = view.findViewById(R.id.add_bookmark)
         rockstarDeleteBookmark = view.findViewById(R.id.delete_bookmark)
+        rockstarImage = view.findViewById(R.id.rockstar_img)
 
         if (dataSource[position] != null) {
             rockstarFullName.text = dataSource[position].lastName + " " + dataSource[position].firstName
             rockstarStatus.text = dataSource[position].status
             rockstarAddBookmark.isChecked = dataSource[position].bookmark
+
+            var requestOptions = RequestOptions()
+            requestOptions = requestOptions.transforms(CenterCrop(), RoundedCorners(5))
+            Glide.with(context).load(dataSource[position].picture)
+                .centerCrop()
+                .apply(requestOptions)
+                .into(rockstarImage)
         }
 
         if (bookmarkView){
@@ -57,6 +68,7 @@ class RockstarListViewAdapter(private val context: Context,
 
         return view
     }
+
 
     override fun getItem(position: Int): Any {
         return dataSource[position]
