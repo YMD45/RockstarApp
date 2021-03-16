@@ -29,6 +29,7 @@
 
     <SearchView
         android:id="@+id/search_bar"
+        android:background="@drawable/search_view_shape"
         android:queryHint="search a rockstar"
         android:iconifiedByDefault="false"
         android:layout_margin="10sp"
