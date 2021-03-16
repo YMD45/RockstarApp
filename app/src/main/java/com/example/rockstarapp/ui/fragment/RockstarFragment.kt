@@ -29,6 +29,8 @@ private const val ARG_PARAM2 = "param2"
 class RockstarFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
+
+    //Vue
     private lateinit var listViewRockstar: ListView
     private lateinit var adapter: RockstarListViewAdapter
     private lateinit var searchRockstar: SearchView
@@ -62,6 +64,14 @@ class RockstarFragment : Fragment() {
         return root
     }
 
+    /*
+       * Initializes the listener for refreshing the list of rockstars
+       * Initializes the listener for the rockstar search bar
+       *
+       * @param db Instance of room database
+       *
+       * @return void
+        */
     private fun setListener(db:AppDatabase) {
 
         refreshRockstar.setOnRefreshListener{
@@ -97,6 +107,13 @@ class RockstarFragment : Fragment() {
 
     }
 
+    /*
+       * Update the rockstars listViewRockstar from the room db
+       *
+       * @param db Instance of room database
+       *
+       * @return void
+        */
     private fun updateListRockstar(db:AppDatabase) {
 
         listRockstar.clear()

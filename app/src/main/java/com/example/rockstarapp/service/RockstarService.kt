@@ -22,6 +22,13 @@ class RockstarService() : AsyncTask<Context,String, ArrayList<Rockstar>>() {
     private val JSON_URL ="https://api.mocki.io/v1/d9d8585a"
     private var listRockstar:ArrayList<Rockstar> = ArrayList()
 
+    /*
+    * In background, get the rockstar from an URL and convert from json to an ArrayListof Rockstar
+    *
+    * @param context the actual context of execution
+    *
+    * @return ArrayList<Rockstar> The list of rockstar we get
+    */
     override fun doInBackground(vararg params: Context): ArrayList<Rockstar> {
         try {
             val url = URL(JSON_URL)

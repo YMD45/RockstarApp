@@ -18,8 +18,6 @@ import com.example.rockstarapp.database.AppDatabase
 import com.example.rockstarapp.model.Profil
 import java.io.File
 
-
-// TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -41,7 +39,7 @@ class ProfilFragment : Fragment() {
     private  var profil: Profil = Profil( "" ,"")
     private var profilExist:Boolean =false
 
-    //Gestion de l'image de profil
+    //For profile image management
     private val imgId = 70
     private var imgUri: Uri? = null
     private val AUTHORITY = "com.example.rockstarapp.fileprovider"
@@ -79,6 +77,12 @@ class ProfilFragment : Fragment() {
         return root
     }
 
+    /*
+       * Get the profil image Uri to show it in imageProfile
+       *
+       *
+       * @return Uri the Uri picture
+    */
     private fun getImgUri():Uri?{
         if (imgUri!=null){
             return imgUri
@@ -99,7 +103,7 @@ class ProfilFragment : Fragment() {
                 cleanImgFolder(profil.image)
             }
 
-            //Si on a pas encore de profil enregistré, il faut le créer
+            //If profil doesn't exist, we create it
             if (profilExist)
                 db.ProfilDao().updateProfil(profil)
             else
@@ -137,6 +141,16 @@ class ProfilFragment : Fragment() {
         }
     }
 
+    /*
+       * We keep all picture taken until one is saved,
+       * to avoid having black screen when we change fragment
+       *
+       * This method is used to delete old images.
+       *
+       * @param imageProfilUri The imageUri choosen to be saved
+       *
+       * @return void
+    */
     private fun cleanImgFolder(imageProfilUri : String) {
         var imgFolder = File(requireContext().filesDir,"images");
         val segments: List<String> = imageProfilUri.split("/")
@@ -149,6 +163,14 @@ class ProfilFragment : Fragment() {
         }
     }
 
+    /*
+       * Get the name written in the edit_name_profil
+       *
+       *
+       * @param editTextProfil The EditText containing the full name
+       *
+       * @return The value of EditText or empty string if it's empty
+    */
     private fun getFullName(editTextProfil:EditText):String = if (editTextProfil.text!=null){
         editTextProfil.text.toString()
     } else {

@@ -34,8 +34,9 @@ class MainActivity : AppCompatActivity() {
     /*
     * Replace the current fragment of the MainActivity,
     *
-    * @param fragment fragment to show
-    * return nothing
+    * @param fragment the fragment to show
+    *
+    * @return void
     */
     private fun replaceFragment (fragment: Fragment){
         val transaction = supportFragmentManager.beginTransaction()

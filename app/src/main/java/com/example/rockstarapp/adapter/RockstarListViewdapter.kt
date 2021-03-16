@@ -78,6 +78,15 @@ class RockstarListViewAdapter(private val context: Context,
         return position.toLong()
     }
 
+    /*
+    * Initialize a listener on the add_bookmark checkbox to update the data related to the rockstar
+    *
+    * @param bookmark The star checkbox in the view,to add the rockstar in boorkmark list
+    * @param context  the execution context
+    * @param rockstar rockstar object associate to the checkbox
+    *
+    * @return void
+     */
     private fun checkboxListener(bookmark: CheckBox, context: Context, rockstar: Rockstar) {
         bookmark.setOnClickListener {
             val db = AppDatabase(context)
@@ -87,6 +96,15 @@ class RockstarListViewAdapter(private val context: Context,
         }
     }
 
+    /*
+       * Initialize a listener on the delete_bookmark button to remove a rockstar from the Bookmarked list
+       *
+       * @param bookmark The trash button in the view, to delete the rockstar
+       * @param context  The context execution
+       * @param rockstar rockstar object associate to the button
+       *
+       * @return void
+        */
     private fun buttonListener(deleteBookmark: ImageButton, context: Context, rockstar: Rockstar) {
         deleteBookmark.setOnClickListener {
             val db = AppDatabase(context)

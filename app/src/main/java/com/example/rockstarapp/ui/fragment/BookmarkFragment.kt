@@ -22,9 +22,11 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class BookmarkFragment : Fragment() {
-    // TODO: Rename and change types of parameters
+
     private var param1: String? = null
     private var param2: String? = null
+
+    //Vue
     private lateinit var listViewRockstarBookmarked: ListView
     private lateinit var listRockstarBookmared:ArrayList<Rockstar>
     private lateinit var adapter: RockstarListViewAdapter
@@ -45,14 +47,21 @@ class BookmarkFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_bookmark, container, false)
         listViewRockstarBookmarked = root.findViewById(R.id.list_rockstars_bookmarked)
 
-        setBookmarkedRockstar()
+        setBookmarkedListRockstar()
 
         adapter = RockstarListViewAdapter(requireActivity(),listRockstarBookmared,true)
         listViewRockstarBookmarked.adapter = adapter
         return root
     }
 
-    private fun setBookmarkedRockstar() {
+    /*
+       * Init list of bookmarked rockstars
+       *
+       * @param db Instance of the room db
+       *
+       * @return void
+    */
+    private fun setBookmarkedListRockstar() {
         listRockstarBookmared = ArrayList()
         val db = AppDatabase(requireContext())
         var bookmarkedRockstar = db.RockstarDao().findByBookmark(true)
