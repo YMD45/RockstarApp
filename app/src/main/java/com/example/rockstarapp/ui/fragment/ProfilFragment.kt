@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import com.example.rockstarapp.R
@@ -108,6 +109,8 @@ class ProfilFragment : Fragment() {
                 db.ProfilDao().updateProfil(profil)
             else
                 db.ProfilDao().insert(profil)
+
+            Toast.makeText(requireContext(),"Votre profil est sauvegardé !",Toast.LENGTH_SHORT).show()
         }
 
         imageProfil.setOnClickListener(){
