@@ -26,13 +26,17 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <ListView
-        android:id="@+id/list_rockstars_bookmarked"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/toolbar_bookmark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="?android:attr/actionBarSize"/>
+        android:orientation="horizontal">
+        <ListView
+            android:id="@+id/list_rockstars_bookmarked"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"/>
 
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
