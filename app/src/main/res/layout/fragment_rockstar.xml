@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:textColor="#FFFFFF"
-            android:text="Rockstars"
+            android:text="@string/rockstars_title"
             android:textSize="30sp"/>
 
     </androidx.appcompat.widget.Toolbar>

@@ -2,6 +2,8 @@
     <string name="app_name">RockstarApp</string>
     <string name="hint_name_profil">Votre nom</string>
     <string name="image_profil_description">Image de profil</string>
-    <string name="profil">Profil</string>
+    <string name="profil_title">Profil</string>
     <string name="save_button">Bouton de sauvegarde</string>
+    <string name="bookmark_title">Bookmark</string>
+    <string name="rockstars_title">Rockstars</string>
 </resources>

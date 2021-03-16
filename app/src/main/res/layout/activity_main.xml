@@ -16,7 +16,7 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
-        app:itemTextColor="@color/button_color"
+        app:itemTextColor="@color/button_nav_color"
         app:itemTextAppearanceActive="@style/activeMenuItem"
         app:itemTextAppearanceInactive="@style/inactiveMenuItem"
         android:layout_width="match_parent"
